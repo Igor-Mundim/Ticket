@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+       <link rel="stylesheet" href="http://localhost/node_modules/bootstrap/compiler/bootstrap.css">
+
+
+    {%  block titulo %}
+
+    {% endblock %}
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSite">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/">Início</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownSite" data-toggle="dropdown">Eventos</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/filme">Filme</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/show">Show</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/esposicao">Esposicao</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/teatro">Teatro</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/infantil">Infantil</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/danca">Danca</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/festa">Festa</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/classico">Clássicos</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Acesso Usuário</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/loginAdm">Admin</a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownSite" data-toggle="dropdown"></a>
+                <div class="dropdown-menu">
+
+                    <a class="dropdown-item" href="/sobre">Sobre</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+    {% block conteudo %}
+
+    {% endblock %}
+
+    {%  block jumbotron %}
+
+{% endblock %}
+</div>
+
+<script src="http://localhost/node_modules/jquery/dist/jquery.js"></script>
+<script src="http://localhost/node_modules/popper.js/dist/popper.js"></script>
+<script src="http://localhost/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+
+<script src="http://localhost/funcao.js"></script>
+<script src="http://localhost/qrcode.min.js"></script>
+
+</body>
+</html>

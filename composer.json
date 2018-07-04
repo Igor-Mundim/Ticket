@@ -1,0 +1,24 @@
+{
+    "name": "Venda de Ingresso",
+    "description": "Trabalho Semestral",
+    "authors": [
+        {
+            "name": "igor",
+            "email": "igor.mundim@outlook.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "symfony/http-foundation": "^3.4",
+        "symfony/routing": "^3.4",
+        "twig/twig": "^2.0",
+        "twbs/bootstrap": "4.1.1"
+
+
+    },
+    "autoload":{
+        "psr-4":{
+            "Ticket\\":"src/"
+        }
+    }
+}

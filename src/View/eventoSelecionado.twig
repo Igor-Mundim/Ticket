@@ -1,0 +1,95 @@
+{% extends "master.twig"%}
+
+{% block conteudo %}
+  <div align="left">
+        <div id="loginbox" style="" class="" align="left">
+            {% for evento in dados %}
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 mb-6 my-1 ">
+                        <img class="card-img-top" src="http://localhost/upload/{{evento.imagem}}" alt="{{evento.imagem}}">
+                    </div>
+                    <div class="col-sm-6 col-md-6 mb-6 my-1">
+                        <div class="alert alert-primary" role="alert">
+                            <h3>{{ evento.nome }}</h3>
+                        </div>
+                        <p> {{ evento.tipo }}</p>
+                        <p>Data-Hora: {{ evento.datahora }}</p>
+                    </div>
+                </div>
+                <div class="alert alert-info col-sm-12 col-md-12 mb-12" role="alert">
+                    <p>{{ evento.descricao }}</p>
+                </div>
+            {% endfor %}
+            <div class="alert alert-primary"  role="alert">
+                Possuimos sessões disponiveis!
+            </div>
+            <div class="container">
+                <div class="col-sm-7 col-md-7 mb-7 my-2" align="left">
+                    {% for evento in dados %}
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Preço:
+                                <span class="badge badge-primary badge-pill">{{ evento.preco }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Quantidade disponivel:
+                                <span class="badge badge-primary badge-pill">{{ evento.quantidade }}</span>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </div>
+                <form id="formComprar">
+                    <div class="input-group col-sm-7 col-md-7 mb-7" align="left">
+                        <div class="input-group-prepend">
+
+                            <span class="input-group-text">Quantidade</span>
+                        </div>
+                        {% for evento in dados %}
+                            <input type="number" name="quantidade" min="1" max="{{evento.quantidade}}" value="1" class="form-control"/>
+                            <input type="number"  style="display: none" name="id" value="{{evento.id}}" />
+                        {% endfor %}
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <div class="col-sm-12 mx-1 controls ">
+                            <button type="submit" class="btn btn-success"> Confirmar</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+
+
+  </div>
+
+
+ </div>
+
+
+
+
+    <div id="div_retorno">
+
+    </div>
+
+    <div id="processando" style="display: none;">
+        <img src="../img/ajax-loader.gif"/>
+    </div>
+
+
+
+
+<form class="form-group center-block text-center"  style="display:none;" id="concluirCompra">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>
+
+</form>
+
+
+{% endblock  %}
+
+
+

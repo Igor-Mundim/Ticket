@@ -1,0 +1,38 @@
+{% extends "master.twig"%}
+
+{% block conteudo %}
+
+    {% if not dados  %}
+    <h1> </h1>
+        <div align="center">
+    <div class="alert alert-success my-5 col-md-8 " align="center" role="alert">
+        <h4 class="alert-heading">OPSss!</h4>
+        <p>
+            Desculpe, ainda não possuimos eventos cadastrados para esta categoria!</p>
+    </div>
+        </div>
+    {% endif %}
+
+        <div class="row mx-5 my-5">
+
+                {% for evento in dados %}
+
+                    <div class="col-sm-6 col-md-4 mb-4" align="center">
+                        <a href="http://www.meuseventos.com/ver/{{evento.id}}" class="card-link">
+                            <img class="card-img-top" src="http://localhost/upload/{{evento.imagem}}" alt="Card image cap">
+                            <h12 class="card-title " >{{ evento.nome }} </h12>
+
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+
+    </div>
+
+
+{% endblock  %}
+
+
+

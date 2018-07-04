@@ -1,0 +1,194 @@
+{% extends "master.twig" %}
+
+{% block conteudo %}
+
+    <div class="form-group">
+        <div class="col-md-12 control">
+            <div style="padding-top:15px; font-size:85%" >
+
+                <a href="#" onClick="$('#loginbox').hide(); $('#formCadastro').show()">
+                   <p> Cadastrar Evento</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <form class="form-group center-block text-center"  style="display:none;" id="formCadastro" enctype="multipart/form-data">
+        <div class="row">
+            <div class="input-group col-md-12 form-control-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nome</span>
+
+                </div>
+                <input type="text" name="nome" class="form-control"/>
+
+            </div>
+
+
+            <div class="form-group col-md-6 mb-6">
+                <select class="form-control rounded-0" name="tipo">
+                    <option>Filme</option>
+                    <option>Show</option>
+                    <option>Esposição</option>
+                    <option>Teatro</option>
+                    <option>Infantil</option>
+                    <option>Danca</option>
+                    <option>Festa</option>
+                    <option>Clássicos</option>
+                </select>
+                <div class="invalid-feedback">Example invalid custom select feedback</div>
+            </div>
+
+            <div class="form-group col-md-6 mb-6">
+                <input type="datetime-local" name="data"  class="form-control"/>
+            </div>
+
+            <div class="input-group col-sm-6 col-md-6 mb-6 form-control-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Preço</span>
+                </div>
+                <input type="number" name="preco" class="form-control"/>
+            </div>
+
+            <div class="input-group col-sm-6 col-md-6 mb-6 form-control-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Quantidade</span>
+                </div>
+                <input type="number" name="quantidade" min="1" class="form-control"/>
+            </div>
+
+            <div class="form-group input-group col-md-12 form-control-lg">
+                <textarea class="form-control" name="descricao" placeholder="Descrição" rows="3"></textarea>
+            </div>
+            <div class="form-group input-group col-md-12 form-control-lg">
+                <input type="file" name="imagem"/>
+            </div>
+        </div>
+        <div class="">
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+        </div>
+        <div class="panel-heading">
+
+            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#formCadastro').hide(); $('#loginbox').show()">Fechar</a></div>
+        </div>
+
+    </form>
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-12 control">
+            <div style="padding-top:15px; font-size:85%" >
+
+                <a href="#" onClick="$('#listarEvento').hide(); $('#listaEvento').show()">
+                    <p>Eventos cadastrados.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <form class="form-group center-block text-center"  style="display:none;" id="listaEvento" enctype="multipart/form-data">
+        <div class="row container" >
+
+            <h4> Eventos Ativos</h4>
+            <table class="table table-bordered" >
+
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Disponivel</th>
+                </tr>
+                </thead>
+                {% for evento in dados %}
+                    {%   if(date(evento.datahora) > date(' -0days') and evento.quantidade >0) %}
+                <tbody>
+                <tr>
+                    <th scope="row">{{evento.id}}</th>
+                    <td>{{evento.nome}}</td>
+                    <td>{{evento.datahora}}</td>
+                    <td>{{evento.preco}}</td>
+                    <td>{{evento.quantidade}}</td>
+
+                </tr>
+                </tbody>
+                    {% endif %}
+                {% endfor %}
+            </table>
+
+            <h4> Eventos Inativos</h4>
+            <table class="table table-bordered" >
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Disponivel</th>
+                </tr>
+                </thead>
+                {% for evento in dados %}
+                    {%   if(date(evento.datahora) < date(' -0days') or evento.quantidade <1) %}
+
+
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{evento.id}}</th>
+                        <td>{{evento.nome}}</td>
+                        <td>{{evento.datahora}}</td>
+                        <td>{{evento.preco}}</td>
+                        <td>{{evento.quantidade}}</td>
+
+                    </tr>
+                    </tbody>
+                    {% endif %}
+                {% endfor %}
+            </table>
+
+            <div class="input-group col-sm-6 col-md-6 mb-6 form-control-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">ID</span>
+                </div>
+                <input type="number" name="id" min="1" class="form-control"/>
+            </div>
+            <div class="col-sm-6 col-md-6 mb-6 form-control-lg" align="left">
+                <button type="submit" class="btn btn-success">Excluir</button>
+            </div>
+        </div>
+        <div class="panel-heading">
+
+            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#listaEvento').hide(); $('#listarEvento').show()">Fechar</a></div>
+        </div>
+
+    </form>
+
+
+    <div class="form-group">
+        <div class="col-md-12 control">
+            <div style="font-size:85%" >
+                <a href="/sair" onClick="$('#textebox').hide(); $('#formteste').show()">
+                    <p>Sair</p>
+                </a>
+            </div>
+        </div>
+    </div>
+  <div id="div_retorno">
+
+    </div>
+
+    <div id="processando" style="display: none;">
+        <img src="../img/ajax-loader.gif"/>
+    </div>
+
+
+
+{% endblock %}
+
+
+
